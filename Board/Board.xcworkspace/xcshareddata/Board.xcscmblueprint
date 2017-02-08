@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "572EC6C63E453E2E636C2DF4A0F0C91BFCF1E275",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "572EC6C63E453E2E636C2DF4A0F0C91BFCF1E275" : 9223372036854775807,
+    "20777605AD38DE56994B1D86B431468EFE922222" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6909F940-4571-4A93-A0D3-C020D5D347B4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "572EC6C63E453E2E636C2DF4A0F0C91BFCF1E275" : "Board\/",
+    "20777605AD38DE56994B1D86B431468EFE922222" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Board",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Board.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Dimaev\/Board2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "20777605AD38DE56994B1D86B431468EFE922222"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Dimaev\/Board.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "572EC6C63E453E2E636C2DF4A0F0C91BFCF1E275"
+    }
+  ]
+}

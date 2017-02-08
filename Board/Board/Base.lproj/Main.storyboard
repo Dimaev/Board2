@@ -52,6 +52,9 @@
                                 <rect key="frame" x="249" y="493" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" backgroundImage="CalendarPicture"/>
+                                <connections>
+                                    <segue destination="9rg-RT-pE0" kind="show" id="DBT-rE-lYS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,6 +64,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4Z-yx-YOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-423.19999999999999" y="-66.11694152923539"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="WT9-hA-6Oa">
+            <objects>
+                <viewController title="Calendar" id="9rg-RT-pE0" customClass="CalendarViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Sb-EV-7jh"/>
+                        <viewControllerLayoutGuide type="bottom" id="NR8-41-GuM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Jn-J8-Bxp" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="calendarView" destination="1Jn-J8-Bxp" id="iBZ-dX-8FF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N5P-Jj-ksG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463" y="729"/>
         </scene>
         <!--Note-->
         <scene sceneID="oSq-4e-unh">
