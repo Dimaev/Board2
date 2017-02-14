@@ -81,9 +81,9 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         // Setup text color
         if cellState.dateBelongsTo == .thisMonth {
-            myCustomCell.dayLabel.textColor = UIColor(colorWithHexValue: 0xECEAED)
+            myCustomCell.dayLabel.textColor = UIColor(colorWithHexValue: 0x666666)
         } else {
-            myCustomCell.dayLabel.textColor = UIColor(colorWithHexValue: 0x574865)
+            myCustomCell.dayLabel.textColor = UIColor(colorWithHexValue: 0x4dacf0)
         }
     }
     
