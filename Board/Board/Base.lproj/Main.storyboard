@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WVt-Pi-VwU">
-    <device id="retina4_0" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hY7-Ib-juB">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,118 +22,191 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJ4-M6-iH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1324" y="-66"/>
+            <point key="canvasLocation" x="-1104" y="-72"/>
         </scene>
         <!--Board-->
         <scene sceneID="Jko-ZL-h3h">
             <objects>
-                <viewController id="Vpu-yh-SMo" sceneMemberID="viewController">
+                <viewController id="Vpu-yh-SMo" customClass="BoardCollectionViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wiB-Ay-RLq"/>
                         <viewControllerLayoutGuide type="bottom" id="5fr-Sm-92y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tqE-oz-AQA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="AE7-K1-fVg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="AE7-K1-fVg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxE-Y0-kBO">
-                                <rect key="frame" x="16" y="493" width="55" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqM-fc-W3a">
+                                <rect key="frame" x="20" y="691" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" backgroundImage="NotePicture"/>
+                                <state key="normal" title="Button" image="NotePicture"/>
                                 <connections>
-                                    <segue destination="1qP-oL-zb4" kind="show" id="alM-Sf-Ark"/>
+                                    <action selector="newNote" destination="Vpu-yh-SMo" eventType="touchUpInside" id="QJ8-PS-rDr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqK-Qc-Wup">
-                                <rect key="frame" x="249" y="493" width="55" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jew-pJ-BLN">
+                                <rect key="frame" x="349" y="691" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal" backgroundImage="CalendarPicture"/>
-                                <connections>
-                                    <segue destination="9rg-RT-pE0" kind="show" id="DBT-rE-lYS"/>
-                                </connections>
+                                <size key="titleShadowOffset" width="18" height="18"/>
+                                <state key="normal" backgroundImage="CalendarPicture">
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZaR-Qx-3ex">
-                                <rect key="frame" x="16" y="72" width="288" height="413"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tcp-tK-ueD">
-                                    <size key="itemSize" width="64" height="61"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XqG-Ba-V85">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="61"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="64" height="61"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Board" id="1Vx-Xy-k6v"/>
+                    <connections>
+                        <segue destination="1qP-oL-zb4" kind="show" identifier="showEditorSegue" id="Kui-YR-5O9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4Z-yx-YOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-423.75" y="-66.549295774647888"/>
+            <point key="canvasLocation" x="-431.8840579710145" y="-71.739130434782609"/>
+        </scene>
+        <!--Notes View Controller-->
+        <scene sceneID="eiP-BK-Dkw">
+            <objects>
+                <viewController id="G6G-aW-Vnq" customClass="NotesViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
+                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="5db-vi-xJx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <navigationItem key="navigationItem" id="CP9-OJ-Ti6">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Ksc-bn-HF9">
+                            <connections>
+                                <action selector="doneEditingBody" destination="G6G-aW-Vnq" id="fG6-NT-0T0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnDoneEditing" destination="Ksc-bn-HF9" id="YOW-Bk-NA6"/>
+                        <outlet property="txtBody" destination="5db-vi-xJx" id="Ck7-wc-I6q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYp-xI-rVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="601" y="995"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="WT9-hA-6Oa">
             <objects>
-                <viewController title="Calendar" id="9rg-RT-pE0" customClass="CalendarViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Calendar" id="9rg-RT-pE0" customClass="CalendarViewController" customModule="Notes" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Sb-EV-7jh"/>
                         <viewControllerLayoutGuide type="bottom" id="NR8-41-GuM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Jn-J8-Bxp" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="calendarView" destination="1Jn-J8-Bxp" id="iBZ-dX-8FF"/>
+                        <outlet property="calendarView" destination="1Jn-J8-Bxp" id="poh-EP-Di5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5P-Jj-ksG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463" y="729"/>
+            <point key="canvasLocation" x="625" y="1684"/>
         </scene>
         <!--Note-->
         <scene sceneID="oSq-4e-unh">
             <objects>
-                <viewController id="1qP-oL-zb4" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WHG-Ym-vvh"/>
-                        <viewControllerLayoutGuide type="bottom" id="ai8-Dp-3kK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Tvx-o8-pAx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" borderStyle="line" placeholder="Text" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hsa-mJ-npC">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
+                <viewController id="1qP-oL-zb4" customClass="NotesViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
+                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="GW3-OQ-cM4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Note" id="0u0-ds-AMR"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <navigationItem key="navigationItem" title="Note" id="GJY-XB-BnW">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="wdM-Yf-7dL"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="txtBody" destination="GW3-OQ-cM4" id="PFI-zw-BJ5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3LU-tu-Nyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="463.768115942029" y="-66.032608695652172"/>
+            <point key="canvasLocation" x="303" y="-66"/>
+        </scene>
+        <!--Notes-->
+        <scene sceneID="EeZ-9x-c5B">
+            <objects>
+                <collectionViewController id="ojY-PV-8Tx" customClass="CollectionViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Kyu-KE-AuY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ThZ-xn-MqN">
+                            <size key="itemSize" width="133" height="126"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" id="7TI-YJ-BaU">
+                            <rect key="frame" x="0.0" y="-64" width="414" height="736"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CELL" id="uMz-UI-pbf">
+                                <rect key="frame" x="0.0" y="0.0" width="133" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="133" height="126"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <connections>
+                                    <segue destination="G6G-aW-Vnq" kind="show" id="ril-8v-P3P"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ojY-PV-8Tx" id="9Nf-Ig-z4T"/>
+                            <outlet property="delegate" destination="ojY-PV-8Tx" id="dH5-ZX-0OC"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Notes" id="g9S-tW-Mj3">
+                        <barButtonItem key="leftBarButtonItem" title="Calendar" id="Uum-YG-3kY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PCo-h7-Klh">
+                            <connections>
+                                <action selector="newNote" destination="ojY-PV-8Tx" id="nkf-du-cCA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="G6G-aW-Vnq" kind="show" identifier="showEditorSegue" id="bAc-0u-tdY"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ll4-tI-Dt8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-239.13043478260872" y="994.56521739130437"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qYs-Vd-ePX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hY7-Ib-juB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iD2-G0-3gr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ojY-PV-8Tx" kind="relationship" relationship="rootViewController" id="Qlk-SR-fFN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BbN-0Y-8tK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1033.3333333333335" y="994.56521739130437"/>
         </scene>
     </scenes>
     <resources>
@@ -141,4 +214,7 @@
         <image name="CalendarPicture" width="464" height="438"/>
         <image name="NotePicture" width="300" height="300"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bAc-0u-tdY"/>
+    </inferredMetricsTieBreakers>
 </document>
