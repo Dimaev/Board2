@@ -10,6 +10,8 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     
+  
+    
     var arrNotes:[String] = []
     var selectedIndex = 0
 
@@ -33,19 +35,14 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-  
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return arrNotes.count
     }
-    
-    
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,21 +50,20 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         //set the selected index before segue
         self.selectedIndex = indexPath.item
         
-      
-     
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CELL",
-                                                      for: indexPath)
-        
-        
-       cell.backgroundColor = UIColor.white
- 
-    
 
+    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CELL",
+                                                      for: indexPath) as UICollectionViewCell
+        
+//        let textForLabel = "Hello"
+//        let label = cell.viewWithTag(1) as! UILabel
+//        label.text = textForLabel
+        
+       cell.backgroundView = UIImageView.init(image: #imageLiteral(resourceName: "NotePaper"))
+ 
         return cell
     }
 
- 
-    
     @IBAction func newNote() {
         
         var newArr:String = ""
@@ -78,7 +74,6 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
         
     
-        
         //set the selected index to the most recently added item
         self.selectedIndex = 0
         

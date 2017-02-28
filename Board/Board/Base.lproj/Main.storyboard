@@ -142,7 +142,7 @@
         <scene sceneID="EeZ-9x-c5B">
             <objects>
                 <collectionViewController id="ojY-PV-8Tx" customClass="CollectionViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Kyu-KE-AuY">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Kyu-KE-AuY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,23 +150,29 @@
                             <size key="itemSize" width="133" height="126"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" id="7TI-YJ-BaU">
                             <rect key="frame" x="0.0" y="-64" width="414" height="736"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CELL" id="uMz-UI-pbf">
-                                <rect key="frame" x="0.0" y="0.0" width="133" height="126"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="CELL" id="uMz-UI-pbf">
+                                <rect key="frame" x="20" y="20" width="133" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="133" height="126"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEr-Oc-qzv">
+                                            <rect key="frame" x="45" y="53" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
-                                <connections>
-                                    <segue destination="G6G-aW-Vnq" kind="show" id="ril-8v-P3P"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -214,7 +220,4 @@
         <image name="CalendarPicture" width="464" height="438"/>
         <image name="NotePicture" width="300" height="300"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="bAc-0u-tdY"/>
-    </inferredMetricsTieBreakers>
 </document>

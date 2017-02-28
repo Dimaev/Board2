@@ -45,7 +45,7 @@ class NotesViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    private func textViewDidBeginEditing(textView: UITextView) {
         //sets the color of the Done button to the default blue
         //it's not a pre-defined value like clearColor, so we give it the exact RGB values
         
