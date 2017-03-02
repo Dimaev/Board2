@@ -17,20 +17,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1S-da-W4y">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NotePaper" translatesAutoresizingMaskIntoConstraints="NO" id="yqh-e8-kiW">
                         <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <nil key="textColor"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtV-Bo-vWQ">
+                        <rect key="frame" x="0.0" y="25" width="110" height="85"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <font key="NSFont" metaFont="smallSystem"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <size key="customSize" width="110" height="112"/>
             <connections>
-                <outlet property="labelText" destination="w1S-da-W4y" id="Y1S-Ac-lCF"/>
+                <outlet property="labelText" destination="dtV-Bo-vWQ" id="lf6-Ym-Tr3"/>
             </connections>
             <point key="canvasLocation" x="265" y="-78"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="NotePaper" width="905" height="906"/>
+    </resources>
 </document>

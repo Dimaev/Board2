@@ -25,6 +25,9 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     }
     
     override func viewDidLoad() {
+        
+        // Добавляем строку, регистрируем xib
+        self.collectionView?.register(UINib(nibName: "TextCellView", bundle: nil), forCellWithReuseIdentifier: "CELL")
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -48,19 +51,15 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //set the selected index before segue
-        self.selectedIndex = indexPath.item
+        // получаем уже Cell нужного типа
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CELL",
+                                                      for: indexPath) as! TextCellView
+      
+        
+        cell.labelText.text = arrNotes[indexPath.row]//[/* укажи правльный идекс в массиве */]
         
 
-    
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CELL",
-                                                      for: indexPath) as UICollectionViewCell
-        
-//        let textForLabel = "Hello"
-//        let label = cell.viewWithTag(1) as! UILabel
-//        label.text = textForLabel
-        
-       cell.backgroundView = UIImageView.init(image: #imageLiteral(resourceName: "NotePaper"))
- 
+//
         return cell
     }
 
@@ -85,6 +84,10 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender:
         Any?) {
+        
+        
+            
+        
         //grab the view controller we're gong to transition to
         let notesEditorVC = segue.destination as!
         NotesViewController
@@ -100,8 +103,7 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
         //set the delegate to "self", so the method gets called here
         notesEditorVC.delegate = self
-    }
- 
+  
 
     /*
     // MARK: - Navigation
@@ -113,4 +115,5 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     }
     */
 
+}
 }
