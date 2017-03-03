@@ -11,18 +11,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CELL" id="q3A-hF-tIk" customClass="TextCellView" customModule="Board" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NotePaper" translatesAutoresizingMaskIntoConstraints="NO" id="yqh-e8-kiW">
-                        <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtV-Bo-vWQ">
-                        <rect key="frame" x="0.0" y="25" width="110" height="85"/>
+                        <rect key="frame" x="0.0" y="25" width="130" height="105"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <attributedString key="attributedText">
                             <fragment content="Label">
@@ -39,7 +39,7 @@
             <connections>
                 <outlet property="labelText" destination="dtV-Bo-vWQ" id="lf6-Ym-Tr3"/>
             </connections>
-            <point key="canvasLocation" x="265" y="-78"/>
+            <point key="canvasLocation" x="181" y="-116"/>
         </collectionViewCell>
     </objects>
     <resources>

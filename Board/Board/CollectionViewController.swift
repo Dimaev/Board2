@@ -12,9 +12,16 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     
   
     
+    
     var arrNotes:[String] = []
     var selectedIndex = 0
 
+    func saveNotesArray() {
+        //save the newly updated array
+        UserDefaults.standard.set(arrNotes, forKey: "notes")
+        UserDefaults.standard.synchronize()
+    }
+    
     func didUpdateNoteWithTitle(newTitle: String, andBody newBody:
         String) {
         //update the respective values
@@ -22,10 +29,21 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         self.arrNotes[self.selectedIndex] = newBody
         //refresh the view
         self.collectionView?.reloadData()
+        
+        saveNotesArray()
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
+   
+       
+        //this is known as downcasting
+        if let newNotes = UserDefaults.standard.array(forKey: "notes") as? [String] {
+            //set the instance variable to the newNotes variable
+            arrNotes = newNotes
+
+        }
         // Добавляем строку, регистрируем xib
         self.collectionView?.register(UINib(nibName: "TextCellView", bundle: nil), forCellWithReuseIdentifier: "CELL")
         super.viewDidLoad()
@@ -56,7 +74,7 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
                                                       for: indexPath) as! TextCellView
       
         
-        cell.labelText.text = arrNotes[indexPath.row]//[/* укажи правльный идекс в массиве */]
+        cell.labelText.text = arrNotes[indexPath.row]
         
 
 //
@@ -68,6 +86,9 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         var newArr:String = ""
         
         arrNotes.insert(newArr, at: 0)
+        
+        //save the notes to the phone
+        saveNotesArray()
        
         performSegue(withIdentifier:"showEditorSegue", sender: nil)
         
@@ -85,8 +106,7 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender:
         Any?) {
         
-        
-            
+    if segue.identifier == "showEditorSegue" {
         
         //grab the view controller we're gong to transition to
         let notesEditorVC = segue.destination as!
@@ -103,7 +123,8 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
         //set the delegate to "self", so the method gets called here
         notesEditorVC.delegate = self
-  
+        
+    }
 
     /*
     // MARK: - Navigation

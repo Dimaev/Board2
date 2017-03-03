@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A079AD21E5F1FA400A644FF /* BoardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A079AD11E5F1FA400A644FF /* BoardCollectionViewController.swift */; };
 		0A7D3DD01E60601E0082D34C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7D3DCF1E60601D0082D34C /* NotesViewController.swift */; };
 		0A7F44F51E4923AF00740838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F44F41E4923AF00740838 /* AppDelegate.swift */; };
 		0A7F44FA1E4923AF00740838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7F44F81E4923AF00740838 /* Main.storyboard */; };
 		0A7F44FC1E4923AF00740838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A7F44FB1E4923AF00740838 /* Assets.xcassets */; };
 		0A7F44FF1E4923AF00740838 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7F44FD1E4923AF00740838 /* LaunchScreen.storyboard */; };
 		0A839E4F1E5F694C0016C72C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A839E4E1E5F694C0016C72C /* CollectionViewController.swift */; };
+		0AD5932C1E6879D600826391 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5932A1E6879D600826391 /* TextView.swift */; };
+		0AD5932D1E6879D600826391 /* TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD5932B1E6879D600826391 /* TextView.xib */; };
 		0ADEFF4E1E63158000080196 /* TextCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ADEFF4D1E63158000080196 /* TextCellView.xib */; };
 		0ADEFF501E6316ED00080196 /* TextCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEFF4F1E6316ED00080196 /* TextCellView.swift */; };
 		0AEB047F1E4B9C8E00523761 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB047E1E4B9C8E00523761 /* CalendarViewController.swift */; };
@@ -24,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A079AD11E5F1FA400A644FF /* BoardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewController.swift; sourceTree = "<group>"; };
 		0A7D3DCF1E60601D0082D34C /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		0A7F44F11E4923AF00740838 /* Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Board.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7F44F41E4923AF00740838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +33,8 @@
 		0A7F44FE1E4923AF00740838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A7F45001E4923AF00740838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A839E4E1E5F694C0016C72C /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		0AD5932A1E6879D600826391 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		0AD5932B1E6879D600826391 /* TextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextView.xib; sourceTree = "<group>"; };
 		0ADEFF4D1E63158000080196 /* TextCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCellView.xib; sourceTree = "<group>"; };
 		0ADEFF4F1E6316ED00080196 /* TextCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCellView.swift; sourceTree = "<group>"; };
 		0AEB047E1E4B9C8E00523761 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +83,6 @@
 				0A7F44F81E4923AF00740838 /* Main.storyboard */,
 				0A7D3DCF1E60601D0082D34C /* NotesViewController.swift */,
 				0A839E4E1E5F694C0016C72C /* CollectionViewController.swift */,
-				0A079AD11E5F1FA400A644FF /* BoardCollectionViewController.swift */,
 				0A7F44FB1E4923AF00740838 /* Assets.xcassets */,
 				0A7F44FD1E4923AF00740838 /* LaunchScreen.storyboard */,
 				0A7F45001E4923AF00740838 /* Info.plist */,
@@ -89,6 +90,8 @@
 				0AEB04801E4BA40500523761 /* Podfile */,
 				0AEB04881E4BC2DE00523761 /* CellView.xib */,
 				0AEB048C1E4BC42400523761 /* CellView.swift */,
+				0AD5932B1E6879D600826391 /* TextView.xib */,
+				0AD5932A1E6879D600826391 /* TextView.swift */,
 				0ADEFF4D1E63158000080196 /* TextCellView.xib */,
 				0ADEFF4F1E6316ED00080196 /* TextCellView.swift */,
 			);
@@ -179,6 +182,7 @@
 				0ADEFF4E1E63158000080196 /* TextCellView.xib in Resources */,
 				0A7F44FF1E4923AF00740838 /* LaunchScreen.storyboard in Resources */,
 				0A7F44FC1E4923AF00740838 /* Assets.xcassets in Resources */,
+				0AD5932D1E6879D600826391 /* TextView.xib in Resources */,
 				0AEB04811E4BA40500523761 /* Podfile in Resources */,
 				0A7F44FA1E4923AF00740838 /* Main.storyboard in Resources */,
 			);
@@ -241,8 +245,8 @@
 			files = (
 				0AEB048D1E4BC42400523761 /* CellView.swift in Sources */,
 				0ADEFF501E6316ED00080196 /* TextCellView.swift in Sources */,
-				0A079AD21E5F1FA400A644FF /* BoardCollectionViewController.swift in Sources */,
 				0A7D3DD01E60601E0082D34C /* NotesViewController.swift in Sources */,
+				0AD5932C1E6879D600826391 /* TextView.swift in Sources */,
 				0AEB047F1E4B9C8E00523761 /* CalendarViewController.swift in Sources */,
 				0A7F44F51E4923AF00740838 /* AppDelegate.swift in Sources */,
 				0A839E4F1E5F694C0016C72C /* CollectionViewController.swift in Sources */,
