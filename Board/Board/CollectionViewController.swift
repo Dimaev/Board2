@@ -12,15 +12,22 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     
   
     
+  
+    @IBOutlet weak var calendarButton: UIBarButtonItem!
     
     var arrNotes:[String] = []
     var selectedIndex = 0
+    
+
+
 
     func saveNotesArray() {
         //save the newly updated array
         UserDefaults.standard.set(arrNotes, forKey: "notes")
         UserDefaults.standard.synchronize()
     }
+    
+   
     
     func didUpdateNoteWithTitle(newTitle: String, andBody newBody:
         String) {
@@ -33,10 +40,14 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         saveNotesArray()
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   
+      let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector ("handleLongPress:"))
+        self.collectionView?.addGestureRecognizer(longPressGesture)
+        
        
         //this is known as downcasting
         if let newNotes = UserDefaults.standard.array(forKey: "notes") as? [String] {
@@ -51,6 +62,26 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         // Do any additional setup after loading the view.
     }
 
+    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        
+        switch(gesture.state) {
+            
+        case UIGestureRecognizerState.began:
+            guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+                break
+            }
+            collectionView?.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case UIGestureRecognizerState.changed:
+            collectionView?.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case UIGestureRecognizerState.ended:
+            collectionView?.endInteractiveMovement()
+        default:
+            collectionView?.cancelInteractiveMovement()
+        }
+        
+                
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -64,6 +95,14 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
                                  numberOfItemsInSection section: Int) -> Int {
         return arrNotes.count
     }
+    
+    override func collectionView(_ moveItemAttocollectionView: UICollectionView,
+                                 moveItemAt sourceIndexPath: IndexPath,
+                                 to destinationIndexPath: IndexPath) {
+        // move your data order
+    }
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

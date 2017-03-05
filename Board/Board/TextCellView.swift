@@ -10,5 +10,7 @@ import UIKit
 
 class TextCellView: UICollectionViewCell {
     
+ 
     @IBOutlet weak var labelText: UILabel!
+   
 }

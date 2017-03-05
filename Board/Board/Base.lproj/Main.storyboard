@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5P-Jj-ksG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="995"/>
+            <point key="canvasLocation" x="600" y="1722"/>
         </scene>
         <!--Notes-->
         <scene sceneID="EeZ-9x-c5B">
@@ -82,6 +82,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
+                                <gestureRecognizers/>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -90,6 +91,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Notes" id="g9S-tW-Mj3">
+                        <barButtonItem key="leftBarButtonItem" title="Calendar" id="MOJ-tQ-aye"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PCo-h7-Klh">
                             <connections>
                                 <action selector="newNote" destination="ojY-PV-8Tx" id="nkf-du-cCA"/>
@@ -97,6 +99,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarButton" destination="MOJ-tQ-aye" id="KDu-Jl-FGw"/>
                         <segue destination="G6G-aW-Vnq" kind="show" identifier="showEditorSegue" id="bAc-0u-tdY"/>
                     </connections>
                 </collectionViewController>
