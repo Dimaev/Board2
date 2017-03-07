@@ -8,11 +8,12 @@
 
 import UIKit
 
+
+
 class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     
   
-    
-  
+
     @IBOutlet weak var calendarButton: UIBarButtonItem!
     
     var arrNotes:[String] = []
@@ -20,12 +21,14 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     
 
 
-
     func saveNotesArray() {
         //save the newly updated array
         UserDefaults.standard.set(arrNotes, forKey: "notes")
         UserDefaults.standard.synchronize()
     }
+    
+    // MARK: The navigation bar's Edit button functions
+ 
     
    
     
@@ -45,23 +48,38 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector ("handleLongPress:"))
+
+        
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector (("handleLongPress:")))
         self.collectionView?.addGestureRecognizer(longPressGesture)
         
-       
+        
+        
+        let SideSwipe = UISwipeGestureRecognizer(target: self, action: #selector(reset(sender:)))
+        //let SideSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("reset:")))
+        SideSwipe.direction = UISwipeGestureRecognizerDirection.left
+        SideSwipe.direction = UISwipeGestureRecognizerDirection.right
+        self.collectionView?.addGestureRecognizer(SideSwipe)
+        
+        
+        
         //this is known as downcasting
         if let newNotes = UserDefaults.standard.array(forKey: "notes") as? [String] {
             //set the instance variable to the newNotes variable
             arrNotes = newNotes
-
         }
+        
         // Добавляем строку, регистрируем xib
         self.collectionView?.register(UINib(nibName: "TextCellView", bundle: nil), forCellWithReuseIdentifier: "CELL")
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
 
+    
+    
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         
         switch(gesture.state) {
@@ -78,18 +96,33 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         default:
             collectionView?.cancelInteractiveMovement()
         }
-        
-                
     }
+      
+  
+    
+
+    func reset(sender: UISwipeGestureRecognizer) {
+        let i = selectedIndex
+        arrNotes.remove(at: i)
+        self.collectionView?.reloadData()
+        saveNotesArray()
+        
+    }
+//selectedIndex = 0 поэтому удаляется первая ячейка
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
@@ -102,23 +135,26 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         // move your data order
     }
     
-    
-    
+        
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //set the selected index before segue
-        // получаем уже Cell нужного типа
+       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CELL",
                                                       for: indexPath) as! TextCellView
+        
+   
       
+      
+        
         
         cell.labelText.text = arrNotes[indexPath.row]
         
-
-//
+        
         return cell
     }
+    
+
 
     @IBAction func newNote() {
         
@@ -140,6 +176,8 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         self.collectionView?.reloadData()
         
     }
+    
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender:

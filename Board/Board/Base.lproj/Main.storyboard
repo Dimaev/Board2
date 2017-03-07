@@ -38,7 +38,7 @@
         <!--Calendar-->
         <scene sceneID="WT9-hA-6Oa">
             <objects>
-                <viewController title="Calendar" id="9rg-RT-pE0" customClass="CalendarViewController" customModule="Notes" sceneMemberID="viewController">
+                <viewController title="Calendar" id="9rg-RT-pE0" customClass="CalendarViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Sb-EV-7jh"/>
                         <viewControllerLayoutGuide type="bottom" id="NR8-41-GuM"/>
@@ -48,13 +48,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Calendar" id="qU4-8B-iGi"/>
                     <connections>
                         <outlet property="calendarView" destination="1Jn-J8-Bxp" id="poh-EP-Di5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5P-Jj-ksG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="1722"/>
+            <point key="canvasLocation" x="600" y="1740"/>
         </scene>
         <!--Notes-->
         <scene sceneID="EeZ-9x-c5B">
@@ -91,7 +92,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Notes" id="g9S-tW-Mj3">
-                        <barButtonItem key="leftBarButtonItem" title="Calendar" id="MOJ-tQ-aye"/>
+                        <barButtonItem key="leftBarButtonItem" title="Calendar" id="MOJ-tQ-aye">
+                            <connections>
+                                <segue destination="9rg-RT-pE0" kind="show" id="mZo-Tj-C4d"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PCo-h7-Klh">
                             <connections>
                                 <action selector="newNote" destination="ojY-PV-8Tx" id="nkf-du-cCA"/>
