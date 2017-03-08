@@ -36,7 +36,6 @@ class NotesViewController: UIViewController, UITextViewDelegate {
         
         self.btnDoneEditing.tintColor = UIColor(red: 0, green:122.0/255.0, blue: 1, alpha: 1)
         
-        //tell the main view controller that we're going to update the selected item
         
         //but only if the delegate is NOT nil
         if self.delegate != nil {
@@ -46,11 +45,11 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     }
     
     private func textViewDidBeginEditing(textView: UITextView) {
-        //sets the color of the Done button to the default blue
+     
         //it's not a pre-defined value like clearColor, so we give it the exact RGB values
         
-        self.btnDoneEditing.tintColor = UIColor(red: 0, green:
-            122.0/255.0, blue: 1, alpha: 1)
+        self.btnDoneEditing.tintColor = UIColor.clear //(red: 0, green:
+            //122.0/255.0, blue: 1, alpha: 1)
     }
 
     

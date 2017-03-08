@@ -17,9 +17,8 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     @IBOutlet weak var calendarButton: UIBarButtonItem!
     
     var arrNotes:[String] = []
-    var selectedIndex = 0
+    var selectedIndex = -1
     
-
 
     func saveNotesArray() {
         //save the newly updated array
@@ -48,20 +47,12 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
-        
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: Selector (("handleLongPress:")))
-        self.collectionView?.addGestureRecognizer(longPressGesture)
-        
-        
         
         let SideSwipe = UISwipeGestureRecognizer(target: self, action: #selector(reset(sender:)))
         //let SideSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("reset:")))
         SideSwipe.direction = UISwipeGestureRecognizerDirection.left
         SideSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.collectionView?.addGestureRecognizer(SideSwipe)
-        
         
         
         //this is known as downcasting
@@ -78,39 +69,16 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
     }
 
-    
-    
-    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-        
-        switch(gesture.state) {
-            
-        case UIGestureRecognizerState.began:
-            guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
-                break
-            }
-            collectionView?.beginInteractiveMovementForItem(at: selectedIndexPath)
-        case UIGestureRecognizerState.changed:
-            collectionView?.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-        case UIGestureRecognizerState.ended:
-            collectionView?.endInteractiveMovement()
-        default:
-            collectionView?.cancelInteractiveMovement()
-        }
-    }
-      
-  
-    
 
     func reset(sender: UISwipeGestureRecognizer) {
-        let i = selectedIndex
-        arrNotes.remove(at: i)
+       
+        arrNotes.remove(at: 0)
         self.collectionView?.reloadData()
         saveNotesArray()
         
     }
-//selectedIndex = 0 поэтому удаляется первая ячейка
     
-    
+
     
     
     override func didReceiveMemoryWarning() {
@@ -118,43 +86,44 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return arrNotes.count
     }
     
-    override func collectionView(_ moveItemAttocollectionView: UICollectionView,
-                                 moveItemAt sourceIndexPath: IndexPath,
-                                 to destinationIndexPath: IndexPath) {
-        // move your data order
+    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath,to destinationIndexPath: IndexPath) {
+        
+        let temp = arrNotes[sourceIndexPath.row]
+        arrNotes[sourceIndexPath.row] = arrNotes[destinationIndexPath.row]
+        arrNotes[destinationIndexPath.row] = temp
+    }
+    
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+         self.selectedIndex = indexPath.row
+        
+         performSegue(withIdentifier: "showEditorSegue", sender: nil)
+   
     }
     
         
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CELL",
                                                       for: indexPath) as! TextCellView
         
-   
-      
-      
-        
-        
         cell.labelText.text = arrNotes[indexPath.row]
-        
         
         return cell
     }
     
-
 
     @IBAction func newNote() {
         
@@ -164,26 +133,24 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
         //save the notes to the phone
         saveNotesArray()
+        
+        //set the selected index to the most recently added item
+        self.selectedIndex = 0
+        
        
         performSegue(withIdentifier:"showEditorSegue", sender: nil)
         
         
-    
-        //set the selected index to the most recently added item
-        self.selectedIndex = 0
-        
         //reload the table ( refresh the view)
         self.collectionView?.reloadData()
-        
-    }
-    
 
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender:
         Any?) {
         
-    if segue.identifier == "showEditorSegue" {
+      if segue.identifier == "showEditorSegue" {
         
         //grab the view controller we're gong to transition to
         let notesEditorVC = segue.destination as!
@@ -201,6 +168,7 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         //set the delegate to "self", so the method gets called here
         notesEditorVC.delegate = self
         
+      }
     }
 
     /*
@@ -213,5 +181,5 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     }
     */
 
-}
+
 }
