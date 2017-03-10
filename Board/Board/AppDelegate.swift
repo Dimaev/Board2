@@ -12,11 +12,67 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var shortcutItem: UIApplicationShortcutItem?
+    
+
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+        print("Application did finish launching with options")
+        
+        var performShortcutDelegate = true
+        
+        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            
+            print("Application launched via shortcut")
+            self.shortcutItem = shortcutItem
+            
+            performShortcutDelegate = false
+        }
+        
+        return performShortcutDelegate
+        
+    }
+    
+    
+ 
+
+    
+
+    func handleShortcut( _ shortcutItem:UIApplicationShortcutItem ) -> Bool {
+        print("Handling shortcut")
+        
+        var succeeded = false
+        
+        if( shortcutItem.type == "be.thenerd.appshortcut.calendar" ) {
+            
+            // Add your code here
+            print("- Handling \(shortcutItem.type)")
+            
+            
+            // Get the view controller you want to load
+            let mainSB = UIStoryboard(name: "Main", bundle: nil)
+            
+            let addNoteVC = mainSB.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+            
+            
+            let navVC = self.window?.rootViewController as! UINavigationController
+            navVC.pushViewController(addNoteVC, animated: true)
+            
+            succeeded = true
+            
+        }
+        
+        return succeeded
+        
+    }
+
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        
+        print("Application performActionForShortcutItem")
+        completionHandler( handleShortcut(shortcutItem) )
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -34,7 +90,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+       
+            print("Application did become active")
+        
+            guard let shortcut = shortcutItem else { return }
+            
+            print("- Shortcut property has been set")
+            
+            handleShortcut(shortcut)
+            
+            self.shortcutItem = nil
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

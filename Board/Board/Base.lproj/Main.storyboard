@@ -11,7 +11,7 @@
         <!--Notes View Controller-->
         <scene sceneID="eiP-BK-Dkw">
             <objects>
-                <viewController id="G6G-aW-Vnq" customClass="NotesViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotesViewController" id="G6G-aW-Vnq" customClass="NotesViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
                     <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="5db-vi-xJx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,7 +38,7 @@
         <!--Calendar-->
         <scene sceneID="WT9-hA-6Oa">
             <objects>
-                <viewController title="Calendar" id="9rg-RT-pE0" customClass="CalendarViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarViewController" title="Calendar" id="9rg-RT-pE0" customClass="CalendarViewController" customModule="Board" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Sb-EV-7jh"/>
                         <viewControllerLayoutGuide type="bottom" id="NR8-41-GuM"/>

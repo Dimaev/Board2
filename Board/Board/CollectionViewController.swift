@@ -26,9 +26,11 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         UserDefaults.standard.synchronize()
     }
     
-    // MARK: The navigation bar's Edit button functions
+//    func saveCellOrder () {
+//        UserDefaults.standard.set(AnyObject.self, forKey: "savedNewOrder")
+//        UserDefaults.standard.synchronize()
+//    }
  
-    
    
     
     func didUpdateNoteWithTitle(newTitle: String, andBody newBody:
@@ -47,6 +49,8 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+     
+        
         
         let SideSwipe = UISwipeGestureRecognizer(target: self, action: #selector(reset(sender:)))
         //let SideSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("reset:")))
@@ -60,6 +64,12 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
             //set the instance variable to the newNotes variable
             arrNotes = newNotes
         }
+        
+//        if let newOrder = UserDefaults.standard.array(forKey: "savedNewOrder") as? [String] {
+//            //set the instance variable to the newNotes variable
+//            arrNotes = newOrder
+//        }
+      
         
         // Добавляем строку, регистрируем xib
         self.collectionView?.register(UINib(nibName: "TextCellView", bundle: nil), forCellWithReuseIdentifier: "CELL")
@@ -100,6 +110,15 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         let temp = arrNotes[sourceIndexPath.row]
         arrNotes[sourceIndexPath.row] = arrNotes[destinationIndexPath.row]
         arrNotes[destinationIndexPath.row] = temp
+        
+       
+//        let myData = NSKeyedArchiver.archivedData(withRootObject: temp)
+//        // NSUserDefaults Save for Reorder of cells
+//        UserDefaults.standard.set(myData, forKey: "savedNewOrder")
+//        
+//   
+//     saveCellOrder()
+   
     }
     
     
@@ -131,18 +150,17 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
         arrNotes.insert(newArr, at: 0)
         
-        //save the notes to the phone
-        saveNotesArray()
+        //reload the table ( refresh the view)
+        self.collectionView?.reloadData()
         
         //set the selected index to the most recently added item
         self.selectedIndex = 0
         
-       
+        //save the notes to the phone
+        saveNotesArray()
+        
         performSegue(withIdentifier:"showEditorSegue", sender: nil)
         
-        
-        //reload the table ( refresh the view)
-        self.collectionView?.reloadData()
 
     }
     
@@ -167,6 +185,7 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
         //set the delegate to "self", so the method gets called here
         notesEditorVC.delegate = self
+        
         
       }
     }
