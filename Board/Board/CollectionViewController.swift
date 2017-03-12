@@ -16,8 +16,15 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
 
     @IBOutlet weak var calendarButton: UIBarButtonItem!
     
+
+    
+    fileprivate var activeCell : TextCellView!
+
     var arrNotes:[String] = []
+    
     var selectedIndex = -1
+    
+
     
 
     func saveNotesArray() {
@@ -49,15 +56,7 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     
-        
-        
-        let SideSwipe = UISwipeGestureRecognizer(target: self, action: #selector(reset(sender:)))
-        //let SideSwipe = UISwipeGestureRecognizer(target: self, action: Selector(("reset:")))
-        SideSwipe.direction = UISwipeGestureRecognizerDirection.left
-        SideSwipe.direction = UISwipeGestureRecognizerDirection.right
-        self.collectionView?.addGestureRecognizer(SideSwipe)
-        
+
         
         //this is known as downcasting
         if let newNotes = UserDefaults.standard.array(forKey: "notes") as? [String] {
@@ -65,29 +64,103 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
             arrNotes = newNotes
         }
         
-//        if let newOrder = UserDefaults.standard.array(forKey: "savedNewOrder") as? [String] {
-//            //set the instance variable to the newNotes variable
-//            arrNotes = newOrder
-//        }
-      
-        
         // Добавляем строку, регистрируем xib
         self.collectionView?.register(UINib(nibName: "TextCellView", bundle: nil), forCellWithReuseIdentifier: "CELL")
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-    }
-
-
-    func reset(sender: UISwipeGestureRecognizer) {
-       
-        arrNotes.remove(at: 0)
-        self.collectionView?.reloadData()
-        saveNotesArray()
+        setupView()
         
     }
     
+    
+    func setupView(){
+        // Setting up swipe gesture recognizers
+        let swipeRight : UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(CollectionViewController.userDidSwipeRight))
+        swipeRight.direction = .right
+        
+        view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft : UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(CollectionViewController.userDidSwipeLeft))
+        swipeLeft.direction = .left
+        
+        view.addGestureRecognizer(swipeLeft)
+    }
+    
+    
+    func getCellAtPoint(_ point: CGPoint) -> TextCellView? {
+        // Function for getting item at point. Note optionals as it could be nil
+        let indexPath = collectionView?.indexPathForItem(at: point)
+        var cell : TextCellView?
+        
+        if indexPath != nil {
+            cell = collectionView?.cellForItem(at: indexPath!) as? TextCellView
+        } else {
+            cell = nil
+        }
+        
+        return cell
+    }
+    
+    func userDidSwipeRight(_ gesture : UISwipeGestureRecognizer){
+        let point = gesture.location(in: collectionView)
+        let duration = animationDuration()
+        
+        if(activeCell == nil){
+            activeCell = getCellAtPoint(point)
+            
+            UIView.animate(withDuration: duration, animations: {
+                self.activeCell?.transform = CGAffineTransform(translationX: 0, y: -self.activeCell.frame.height)
+            });
+        } else {
+            // Getting the cell at the point
+            let cell = getCellAtPoint(point)
+            
+            // If the cell is the previously swiped cell, or nothing assume its the previously one.
+            if cell == nil || cell == activeCell {
+              
+                    
+                    let indexPath = collectionView?.indexPath(for: activeCell)
+                    arrNotes.remove(at: indexPath!.row)
+                    collectionView?.deleteItems(at: [indexPath!])
+                    saveNotesArray()
+                
+                // If another cell is swiped
+            } else if activeCell != cell {
+                // It's not the same cell that is swiped, so the previously selected cell will get unswiped and the new swiped.
+                UIView.animate(withDuration: duration, animations: {
+                    self.activeCell.transform = CGAffineTransform.identity
+                    cell!.transform = CGAffineTransform(translationX: 0, y: -cell!.frame.height)
+                }, completion: {
+                    (Void) in
+                    self.activeCell = cell
+                })
+                
+            }
+        }
+        
+        
+    }
+    
+    
+    func userDidSwipeLeft(){
+        // Revert back
+        if(activeCell != nil){
+            let duration = animationDuration()
+            
+            UIView.animate(withDuration: duration, animations: {
+                self.activeCell.transform = CGAffineTransform.identity
+            }, completion: {
+                (Void) in
+                self.activeCell = nil
+            })
+        }
+    }
+    
+    func animationDuration() -> Double {
+        return 0.5
+    }
+
 
     
     
@@ -128,8 +201,14 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
          self.selectedIndex = indexPath.row
         
          performSegue(withIdentifier: "showEditorSegue", sender: nil)
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        if activeCell != nil && activeCell != cell {
+            userDidSwipeLeft()
+        }
    
     }
+    
     
         
     override func collectionView(_ collectionView: UICollectionView,
@@ -141,8 +220,11 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         cell.labelText.text = arrNotes[indexPath.row]
         
         return cell
+        
     }
     
+    
+
 
     @IBAction func newNote() {
         
