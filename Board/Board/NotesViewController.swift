@@ -8,7 +8,7 @@
 
 import UIKit
 
-//the protocol (or delegate) pattern, so we can update the table view's selected item
+//the protocol (or delegate) pattern, so we can update the collection view's selected item
 
 protocol NoteViewDelegate {
     //the name of the function that will be implemented
@@ -17,7 +17,7 @@ protocol NoteViewDelegate {
 
 class NotesViewController: UIViewController, UITextViewDelegate {
     
-    //a variable to hold the delegate (so we can update the table view)
+    //a variable to hold the delegate (so we can update the collection view)
     
     var delegate : NoteViewDelegate?
     
@@ -46,10 +46,7 @@ class NotesViewController: UIViewController, UITextViewDelegate {
     
     private func textViewDidBeginEditing(textView: UITextView) {
      
-        //it's not a pre-defined value like clearColor, so we give it the exact RGB values
-        
-        self.btnDoneEditing.tintColor = UIColor.clear //(red: 0, green:
-            //122.0/255.0, blue: 1, alpha: 1)
+        self.btnDoneEditing.tintColor = UIColor.clear
     }
 
     
@@ -75,8 +72,6 @@ class NotesViewController: UIViewController, UITextViewDelegate {
             self.delegate!.didUpdateNoteWithTitle(newTitle: self.navigationItem.title!, andBody: self.txtBody.text)
         }
     }
-
- 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

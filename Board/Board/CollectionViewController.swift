@@ -13,50 +13,31 @@ import UIKit
 class CollectionViewController: UICollectionViewController, NoteViewDelegate {
     
   
-
     @IBOutlet weak var calendarButton: UIBarButtonItem!
     
-
     
     fileprivate var activeCell : TextCellView!
-
     var arrNotes:[String] = []
-    
     var selectedIndex = -1
     
 
-    
-
     func saveNotesArray() {
-        //save the newly updated array
         UserDefaults.standard.set(arrNotes, forKey: "notes")
         UserDefaults.standard.synchronize()
     }
     
-//    func saveCellOrder () {
-//        UserDefaults.standard.set(AnyObject.self, forKey: "savedNewOrder")
-//        UserDefaults.standard.synchronize()
-//    }
- 
-   
     
     func didUpdateNoteWithTitle(newTitle: String, andBody newBody:
         String) {
         //update the respective values
-        
         self.arrNotes[self.selectedIndex] = newBody
-        //refresh the view
         self.collectionView?.reloadData()
         
         saveNotesArray()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         
         //this is known as downcasting
         if let newNotes = UserDefaults.standard.array(forKey: "notes") as? [String] {
@@ -161,8 +142,6 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         return 0.5
     }
 
-
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -183,17 +162,7 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         let temp = arrNotes[sourceIndexPath.row]
         arrNotes[sourceIndexPath.row] = arrNotes[destinationIndexPath.row]
         arrNotes[destinationIndexPath.row] = temp
-        
-       
-//        let myData = NSKeyedArchiver.archivedData(withRootObject: temp)
-//        // NSUserDefaults Save for Reorder of cells
-//        UserDefaults.standard.set(myData, forKey: "savedNewOrder")
-//        
-//   
-//     saveCellOrder()
-   
     }
-    
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -209,7 +178,6 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
    
     }
     
-    
         
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -223,8 +191,6 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
     }
     
-    
-
 
     @IBAction func newNote() {
         
@@ -232,13 +198,11 @@ class CollectionViewController: UICollectionViewController, NoteViewDelegate {
         
         arrNotes.insert(newArr, at: 0)
         
-        //reload the table ( refresh the view)
         self.collectionView?.reloadData()
         
         //set the selected index to the most recently added item
         self.selectedIndex = 0
         
-        //save the notes to the phone
         saveNotesArray()
         
         performSegue(withIdentifier:"showEditorSegue", sender: nil)

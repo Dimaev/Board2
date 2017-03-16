@@ -18,7 +18,6 @@ import JTAppleCalendar
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     
     
-    
     func handleCellTextColor(view: JTAppleDayCellView?, cellState: CellState) {
         
         guard let myCustomCell = view as? CellView  else {
@@ -92,7 +91,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
         
-        let startDate = formatter.date(from: "2017 02 01")! // You can use date generated from a formatter
+        let startDate = formatter.date(from: "2017 03 01")! // You can use date generated from a formatter
         let endDate = Date()                                // You can also use dates created from this function
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
@@ -113,6 +112,7 @@ class CalendarViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
         calendarView.dataSource = self
         calendarView.delegate = self
         calendarView.registerCellViewXib(file: "CellView") // Registering your cell is manditory
