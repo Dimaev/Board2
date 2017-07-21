@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0664F6E0AC8E3FBC1555BF2CCF3ADF90 /* JTAppleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A22AFE7C1AFC8719DC5B3C0D7DECD13A /* JTAppleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AA25A35C81005F86D3C9D1890B4B7C7 /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55E35E77B986B6B4DFB30F6B0AF552 /* GlobalFunctionsAndExtensions.swift */; };
-		0AEB048F1E4BD65C00523761 /* JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEB048E1E4BD65C00523761 /* JTAppleCalendar.framework */; };
 		1E62B9AE2E8A0A98CF0AC422C07CAB9E /* CalendarEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C53DEE7D550F0E64D258B05215894 /* CalendarEnums.swift */; };
 		3A2986A0A9A252C91C37BE5CE6200CBC /* JTAppleViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529DA929DBBAC5BF90A641CEE6C334CD /* JTAppleViews.swift */; };
 		3DF18B6007900EBB7D9D4D76E52AF98F /* JTAppleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5B68208F0836A41A932D609B8B0C5 /* JTAppleCalendarView.swift */; };
@@ -22,7 +21,6 @@
 		AC944EBE6F4A4FA1AE4F3B8F087A6D3F /* JTAppleCalendarDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B15BADAA91CF2ECB32FA0D340ACD9A1 /* JTAppleCalendarDelegateProtocol.swift */; };
 		B059C7FAB05089E6E2E775FECF3ED439 /* JTAppleCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760320DA4168E0E4FFC66BAF534D228 /* JTAppleCalendarLayout.swift */; };
 		B965C27470712E31BBBE1FAF1EC710C6 /* JTAppleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5173393E9957EF640FA4EE4FBB3122 /* JTAppleCalendar-dummy.m */; };
-		C2F18E918FC190718D13E9DA0A4A3A30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		D4691FFE7B4559D8694FA495D8137D55 /* JTAppleReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05104208798316317C95DC9A07EA90E /* JTAppleReusableViewProtocol.swift */; };
 		DB736BB112B3D4FD8B09DB203016735A /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC54977882EC55B9B56012EC5ED64A /* JTCalendarProtocols.swift */; };
 		DB94187A5E87BF1E263B7E18A2ED2F7A /* UIScrollViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928A0D30970CD8FA4D5D0134349B444 /* UIScrollViewDelegates.swift */; };
@@ -93,8 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F18E918FC190718D13E9DA0A4A3A30 /* Foundation.framework in Frameworks */,
-				0AEB048F1E4BD65C00523761 /* JTAppleCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
